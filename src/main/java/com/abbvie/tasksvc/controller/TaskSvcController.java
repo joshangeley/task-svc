@@ -15,19 +15,19 @@ import java.util.Optional;
 @Produces(MediaType.APPLICATION_JSON)
 public class TaskSvcController {
     private final String template;
-    private final String defaultName;
+    private final String taskDescription;
     private final AtomicLong counter;
 
-    public TaskSvcController(String template, String defaultName) {
+    public TaskSvcController(String template, String taskDescription) {
         this.template = template;
-        this.defaultName = defaultName;
+        this.taskDescription = taskDescription;
         this.counter = new AtomicLong();
     }
 
     @GET
     @Timed
     public BasicTask getTaskJSON(@QueryParam("name") Optional<String> name) {
-        final String value = String.format(template, name.orElse(defaultName));
+        final String value = String.format(template, name.orElse(taskDescription));
         return new BasicTask(counter.incrementAndGet(), value);
     }
 }

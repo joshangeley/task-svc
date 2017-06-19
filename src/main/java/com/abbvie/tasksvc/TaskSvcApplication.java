@@ -1,5 +1,6 @@
 package com.abbvie.tasksvc;
 
+import com.abbvie.tasksvc.controller.HealthCheckController;
 import com.abbvie.tasksvc.controller.TaskSvcController;
 import com.abbvie.tasksvc.health.TemplateHealthCheck;
 
@@ -28,14 +29,10 @@ public class TaskSvcApplication extends Application<TaskSvcConfiguration> {
     @Override
     public void run(TaskSvcConfiguration configuration,
                     Environment environment) {
-        final TaskSvcController resource = new TaskSvcController(
-                configuration.getTemplate(),
-                configuration.getDefaultName()
-        );
-        final TemplateHealthCheck healthCheck =
-                new TemplateHealthCheck(configuration.getTemplate());
-        environment.healthChecks().register("template", healthCheck);
+        final TaskSvcController resource = new TaskSvcController("Description %s", "This is a task");
+        final HealthCheckController health = new HealthCheckController();
         environment.jersey().register(resource);
+        environment.jersey().register(health);
     }
 
 
