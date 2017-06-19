@@ -1,2 +1,19 @@
-template: Hello, %s!
-defaultName: Stranger
+localServerConfig:
+  logDirectory: ./logs/consensus/server
+  serverConfig:
+    host: 127.0.0.1
+    port: 8700
+
+serverConfigs:
+  - host: 127.0.0.1
+    port: 8700
+
+s3db:
+  casesConfig:
+    bucketName: evan-abbvie-demo-east1/cases
+    keyBase: documents
+  logsConfig:
+    bucketName: evan-abbvie-demo-east1/logs
+    keyBase: logs
+
+additionalSchemaDocument: config/additional_fields.json
