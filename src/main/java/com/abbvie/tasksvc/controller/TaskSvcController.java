@@ -13,12 +13,12 @@ import java.util.Optional;
 
 @Path("/tasks")
 @Produces(MediaType.APPLICATION_JSON)
-public class TaskSvcResource {
+public class TaskSvcController {
     private final String template;
     private final String defaultName;
     private final AtomicLong counter;
 
-    public TaskSvcResource(String template, String defaultName) {
+    public TaskSvcController(String template, String defaultName) {
         this.template = template;
         this.defaultName = defaultName;
         this.counter = new AtomicLong();
@@ -26,7 +26,7 @@ public class TaskSvcResource {
 
     @GET
     @Timed
-    public BasicTask sayHello(@QueryParam("name") Optional<String> name) {
+    public BasicTask getTaskJSON(@QueryParam("name") Optional<String> name) {
         final String value = String.format(template, name.orElse(defaultName));
         return new BasicTask(counter.incrementAndGet(), value);
     }

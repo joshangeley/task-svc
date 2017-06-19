@@ -1,6 +1,6 @@
 package com.abbvie.tasksvc;
 
-import com.abbvie.tasksvc.controller.TaskSvcResource;
+import com.abbvie.tasksvc.controller.TaskSvcController;
 import com.abbvie.tasksvc.health.TemplateHealthCheck;
 
 import io.dropwizard.Application;
@@ -17,7 +17,7 @@ public class TaskSvcApplication extends Application<TaskSvcConfiguration> {
 
     @Override
     public String getName() {
-        return "hello-world";
+        return "task-svc application";
     }
 
     @Override
@@ -28,7 +28,7 @@ public class TaskSvcApplication extends Application<TaskSvcConfiguration> {
     @Override
     public void run(TaskSvcConfiguration configuration,
                     Environment environment) {
-        final TaskSvcResource resource = new TaskSvcResource(
+        final TaskSvcController resource = new TaskSvcController(
                 configuration.getTemplate(),
                 configuration.getDefaultName()
         );
