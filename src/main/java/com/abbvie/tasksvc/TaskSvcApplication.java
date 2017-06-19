@@ -1,6 +1,6 @@
 package com.abbvie.tasksvc;
 
-import com.abbvie.tasksvc.resources.TaskSvcResource;
+import com.abbvie.tasksvc.controller.TaskSvcResource;
 import com.abbvie.tasksvc.health.TemplateHealthCheck;
 
 import io.dropwizard.Application;

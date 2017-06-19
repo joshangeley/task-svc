@@ -1,7 +1,7 @@
-package com.abbvie.tasksvc.resources;
+package com.abbvie.tasksvc.controller;
 
 import com.codahale.metrics.annotation.Timed;
-import com.abbvie.tasksvc.api.BasicTask;
+import com.abbvie.tasksvc.model.BasicTask;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
